@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "436799518757",
+    "project_id": "mrca-ea46d",
+    "storage_bucket": "mrca-ea46d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436799518757:android:b51f071d2961ffe29fe7cc",
+        "android_client_info": {
+          "package_name": "com.dev.mrca_team.mrca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436799518757-sc29d0vtcf56lfk1v4j4f14ub8odn0nm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhiDcvx1jtRxkvG8yJolozjRXQ4yn4vM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436799518757-sc29d0vtcf56lfk1v4j4f14ub8odn0nm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
