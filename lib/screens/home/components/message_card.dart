@@ -34,7 +34,7 @@ class MessageCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '12h ',
+                chat.id,
                 style: const TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 5),

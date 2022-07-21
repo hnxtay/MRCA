@@ -14,7 +14,7 @@ class HomeScreenViewModel extends ChangeNotifier {
   }
 
   Stream<List<Conversation>> get conversationsStream =>
-      _api.getFirestoreData('conversations', 10).map((event) {
+      _api.getFirestoreData('/conversations', 10).map((event) {
         return event.docs.map((e) => Conversation.fromJson(e.data())).toList();
       });
 }
