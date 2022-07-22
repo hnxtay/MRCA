@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mrca/models/chat_model.dart';
+import 'package:mrca/extensions/string_exts.dart';
 import 'package:mrca/models/conversation.dart';
 
 class MessageCard extends StatelessWidget {
@@ -18,13 +17,13 @@ class MessageCard extends StatelessWidget {
         horizontal: 5,
       ),
       child: ListTile(
-        leading: CircleAvatar(
+        leading: const CircleAvatar(
           radius: 25,
-          backgroundImage: AssetImage(''),
+          backgroundImage: AssetImage('assets/pictures/selfie_1.jpg'),
         ),
-        title: Text(chat.from),
+        title: Text('${chat.from.firstName} ${chat.from.lastName}'),
         subtitle: Text(
-          'last messages',
+          chat.lastMsg,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
         ),
@@ -34,7 +33,7 @@ class MessageCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                chat.id,
+                chat.time.formattedDatetimeFromTimestamp(pattern: 'HH:mm'),
                 style: const TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 5),
@@ -45,56 +44,56 @@ class MessageCard extends StatelessWidget {
     );
   }
 
-  Widget messageStatus(MessageStatus messageStatus) {
-    if (messageStatus == MessageStatus.sending) {
-      return SvgPicture.asset(
-        'assets/svg/check.svg',
-        height: 12,
-        width: 12,
-        color: Colors.grey,
-      );
-    } else if (messageStatus == MessageStatus.sent) {
-      return Row(
-        children: [
-          SvgPicture.asset(
-            'assets/svg/check.svg',
-            height: 12,
-            width: 12,
-            color: Colors.grey,
-          ),
-          SvgPicture.asset(
-            'assets/svg/check.svg',
-            height: 12,
-            width: 12,
-            color: Colors.grey,
-          ),
-        ],
-      );
-    } else {
-      return Row(
-        children: [
-          SvgPicture.asset(
-            'assets/svg/check.svg',
-            height: 12,
-            width: 12,
-            color: Colors.green,
-          ),
-          SvgPicture.asset(
-            'assets/svg/check.svg',
-            height: 12,
-            width: 12,
-            color: Colors.green,
-          ),
-        ],
-      );
-    }
-  }
-
-  String checkMessageTime(DateTime messageTime) {
-    if (messageTime.hour >= 12) {
-      return 'PM';
-    } else {
-      return 'AM';
-    }
-  }
+// Widget messageStatus(MessageStatus messageStatus) {
+//   if (messageStatus == MessageStatus.sending) {
+//     return SvgPicture.asset(
+//       'assets/svg/check.svg',
+//       height: 12,
+//       width: 12,
+//       color: Colors.grey,
+//     );
+//   } else if (messageStatus == MessageStatus.sent) {
+//     return Row(
+//       children: [
+//         SvgPicture.asset(
+//           'assets/svg/check.svg',
+//           height: 12,
+//           width: 12,
+//           color: Colors.grey,
+//         ),
+//         SvgPicture.asset(
+//           'assets/svg/check.svg',
+//           height: 12,
+//           width: 12,
+//           color: Colors.grey,
+//         ),
+//       ],
+//     );
+//   } else {
+//     return Row(
+//       children: [
+//         SvgPicture.asset(
+//           'assets/svg/check.svg',
+//           height: 12,
+//           width: 12,
+//           color: Colors.green,
+//         ),
+//         SvgPicture.asset(
+//           'assets/svg/check.svg',
+//           height: 12,
+//           width: 12,
+//           color: Colors.green,
+//         ),
+//       ],
+//     );
+//   }
+// }
+//
+// String checkMessageTime(DateTime messageTime) {
+//   if (messageTime.hour >= 12) {
+//     return 'PM';
+//   } else {
+//     return 'AM';
+//   }
+// }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mrca/blocs/chat_screen_view_model.dart';
 import 'package:mrca/blocs/home_screen_view_model.dart';
-import 'package:mrca/dummy_data.dart';
-import 'package:mrca/screens/home/components/bottom_button.dart';
+import 'package:mrca/screens/chat/chat_screen.dart';
 import 'package:mrca/screens/home/components/message_card.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +45,21 @@ class HomeScreen extends StatelessWidget {
               builder: (context, value, child) => SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (_, index) {
-                    return MessageCard(chat: value.conversations[index]);
+                    return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ChangeNotifierProvider(
+                                child: ChatScreen(
+                                    conversationId:
+                                        value.conversations[index].id),
+                                create: (_) => ChatScreenViewModel(),
+                              ),
+                            ),
+                          );
+                        },
+                        child: MessageCard(chat: value.conversations[index]));
                   },
                   childCount: value.conversations.length,
                 ),
@@ -54,55 +68,41 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        alignment: Alignment.center,
-        height: 50,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(color: Colors.black26, blurRadius: 10),
-          ],
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(10),
+      bottomNavigationBar: Consumer<HomeScreenViewModel>(
+        builder: (_, value, child) {
+          return BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.people_sharp),
+                label: 'Social',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.manage_accounts_sharp),
+                label: 'Setting',
+              ),
+            ],
+            currentIndex: value.bottomNavIndex,
+            selectedItemColor: Colors.blue[800],
+            onTap: value.setBottomNavIndex,
+          );
+        },
+      ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 64, right: 8),
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue,
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
           ),
-        ),
-        child: Row(
-          children: const [
-            Spacer(),
-            BottomNavBarCustomIcon(
-              iconUrl: 'assets/svg/send_symbol.svg',
-              isActive: true,
-              notifications: 5,
-            ),
-            Spacer(),
-            BottomNavBarCustomIcon(
-              iconUrl: 'assets/svg/call.svg',
-              notifications: 0,
-            ),
-            Spacer(flex: 3),
-            BottomNavBarCustomIcon(
-              iconUrl: 'assets/svg/heart.svg',
-              notifications: 0,
-            ),
-            Spacer(),
-            BottomNavBarCustomIcon(
-              iconUrl: 'assets/svg/person.svg',
-              notifications: 0,
-            ),
-            Spacer(),
-          ],
+          onPressed: () {},
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        onPressed: () {},
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 }

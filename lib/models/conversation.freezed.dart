@@ -21,8 +21,11 @@ Conversation _$ConversationFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Conversation {
   String get id => throw _privateConstructorUsedError;
-  String get from => throw _privateConstructorUsedError;
+  type.User get from => throw _privateConstructorUsedError;
   String get to => throw _privateConstructorUsedError;
+  String get lastMsg => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  String get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +38,13 @@ abstract class $ConversationCopyWith<$Res> {
   factory $ConversationCopyWith(
           Conversation value, $Res Function(Conversation) then) =
       _$ConversationCopyWithImpl<$Res>;
-  $Res call({String id, String from, String to});
+  $Res call(
+      {String id,
+      type.User from,
+      String to,
+      String lastMsg,
+      String status,
+      String time});
 }
 
 /// @nodoc
@@ -51,6 +60,9 @@ class _$ConversationCopyWithImpl<$Res> implements $ConversationCopyWith<$Res> {
     Object? id = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? lastMsg = freezed,
+    Object? status = freezed,
+    Object? time = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -60,10 +72,22 @@ class _$ConversationCopyWithImpl<$Res> implements $ConversationCopyWith<$Res> {
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as String,
+              as type.User,
       to: to == freezed
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastMsg: lastMsg == freezed
+          ? _value.lastMsg
+          : lastMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -76,7 +100,13 @@ abstract class _$$_ConversationCopyWith<$Res>
           _$_Conversation value, $Res Function(_$_Conversation) then) =
       __$$_ConversationCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String from, String to});
+  $Res call(
+      {String id,
+      type.User from,
+      String to,
+      String lastMsg,
+      String status,
+      String time});
 }
 
 /// @nodoc
@@ -95,6 +125,9 @@ class __$$_ConversationCopyWithImpl<$Res>
     Object? id = freezed,
     Object? from = freezed,
     Object? to = freezed,
+    Object? lastMsg = freezed,
+    Object? status = freezed,
+    Object? time = freezed,
   }) {
     return _then(_$_Conversation(
       id: id == freezed
@@ -104,21 +137,37 @@ class __$$_ConversationCopyWithImpl<$Res>
       from: from == freezed
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
-              as String,
+              as type.User,
       to: to == freezed
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastMsg: lastMsg == freezed
+          ? _value.lastMsg
+          : lastMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+      time: time == freezed
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
 /// @nodoc
-
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable()
 class _$_Conversation implements _Conversation {
   const _$_Conversation(
-      {required this.id, required this.from, required this.to});
+      {required this.id,
+      required this.from,
+      required this.to,
+      required this.lastMsg,
+      required this.status,
+      required this.time});
 
   factory _$_Conversation.fromJson(Map<String, dynamic> json) =>
       _$$_ConversationFromJson(json);
@@ -126,13 +175,19 @@ class _$_Conversation implements _Conversation {
   @override
   final String id;
   @override
-  final String from;
+  final type.User from;
   @override
   final String to;
+  @override
+  final String lastMsg;
+  @override
+  final String status;
+  @override
+  final String time;
 
   @override
   String toString() {
-    return 'Conversation(id: $id, from: $from, to: $to)';
+    return 'Conversation(id: $id, from: $from, to: $to, lastMsg: $lastMsg, status: $status, time: $time)';
   }
 
   @override
@@ -142,7 +197,10 @@ class _$_Conversation implements _Conversation {
             other is _$_Conversation &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to));
+            const DeepCollectionEquality().equals(other.to, to) &&
+            const DeepCollectionEquality().equals(other.lastMsg, lastMsg) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.time, time));
   }
 
   @JsonKey(ignore: true)
@@ -151,7 +209,10 @@ class _$_Conversation implements _Conversation {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to));
+      const DeepCollectionEquality().hash(to),
+      const DeepCollectionEquality().hash(lastMsg),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(time));
 
   @JsonKey(ignore: true)
   @override
@@ -169,8 +230,11 @@ class _$_Conversation implements _Conversation {
 abstract class _Conversation implements Conversation {
   const factory _Conversation(
       {required final String id,
-      required final String from,
-      required final String to}) = _$_Conversation;
+      required final type.User from,
+      required final String to,
+      required final String lastMsg,
+      required final String status,
+      required final String time}) = _$_Conversation;
 
   factory _Conversation.fromJson(Map<String, dynamic> json) =
       _$_Conversation.fromJson;
@@ -178,9 +242,15 @@ abstract class _Conversation implements Conversation {
   @override
   String get id;
   @override
-  String get from;
+  type.User get from;
   @override
   String get to;
+  @override
+  String get lastMsg;
+  @override
+  String get status;
+  @override
+  String get time;
   @override
   @JsonKey(ignore: true)
   _$$_ConversationCopyWith<_$_Conversation> get copyWith =>

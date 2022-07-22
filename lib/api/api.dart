@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:mrca/constants/firestore_constants.dart';
 
 class Api {
   final _fireStore = FirebaseFirestore.instance;
@@ -10,8 +11,17 @@ class Api {
 
   Api._internal();
 
-  Stream<QuerySnapshot<Map<String, dynamic>>> getFirestoreData(
-      String collectionPath, int limit) {
-    return _fireStore.collection(collectionPath).limit(limit).snapshots();
+  Stream<QuerySnapshot<Map<String, dynamic>>> getAllConversation(int limit) {
+    return _fireStore.collection(conversationPath).limit(limit).snapshots();
+  }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> getMessageOfConversation(
+      String conversationId,
+      {int limit = 50}) {
+    return _fireStore
+        .collection(messagePath)
+        .where('roomId', isEqualTo: conversationId)
+        .limit(limit)
+        .snapshots();
   }
 }
