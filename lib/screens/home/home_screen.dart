@@ -5,9 +5,14 @@ import 'package:mrca/screens/chat/chat_screen.dart';
 import 'package:mrca/screens/home/components/message_card.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,17 +33,7 @@ class HomeScreen extends StatelessWidget {
           slivers: [
             const SliverToBoxAdapter(
               child: SizedBox(
-                height: 20,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 15,
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(
-                height: 15,
+                height: 16,
               ),
             ),
             Consumer<HomeScreenViewModel>(
@@ -52,14 +47,14 @@ class HomeScreen extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (_) => ChangeNotifierProvider(
                                 child: ChatScreen(
-                                    conversationId:
-                                        value.conversations[index].id),
+                                    conversation: value.conversations[index]),
                                 create: (_) => ChatScreenViewModel(),
                               ),
                             ),
                           );
                         },
-                        child: MessageCard(chat: value.conversations[index]));
+                        child: MessageCard(
+                            conversation: value.conversations[index]));
                   },
                   childCount: value.conversations.length,
                 ),

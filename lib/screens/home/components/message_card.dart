@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_types/flutter_chat_types.dart' as type;
+import 'package:mrca/config/user_config.dart';
 import 'package:mrca/extensions/string_exts.dart';
 import 'package:mrca/models/conversation.dart';
 
 class MessageCard extends StatelessWidget {
-  final Conversation chat;
+  final Conversation conversation;
 
   const MessageCard({
     Key? key,
-    required this.chat,
+    required this.conversation,
   }) : super(key: key);
+
+  type.User get fromUser => conversation.from.id != currentUser.id
+      ? conversation.from
+      : conversation.to;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +27,12 @@ class MessageCard extends StatelessWidget {
           radius: 25,
           backgroundImage: AssetImage('assets/pictures/selfie_1.jpg'),
         ),
-        title: Text('${chat.from.firstName} ${chat.from.lastName}'),
-        subtitle: Text(
-          chat.lastMsg,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        title: Text('${fromUser.firstName} ${fromUser.lastName}'),
+        subtitle: Row(
+          children: [
+            Text(conversation.lastMsg.from == currentUser.id ? 'You: ' : ''),
+            Text(conversation.lastMsg.text),
+          ],
         ),
         trailing: FittedBox(
           child: Column(
@@ -33,7 +40,8 @@ class MessageCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                chat.time.formattedDatetimeFromTimestamp(pattern: 'HH:mm'),
+                conversation.lastMsg.time
+                    .formattedDatetimeFromTimestamp(pattern: 'HH:mm'),
                 style: const TextStyle(color: Colors.grey),
               ),
               const SizedBox(height: 5),

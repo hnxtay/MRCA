@@ -1,14 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mrca/blocs/home_screen_view_model.dart';
 import 'package:mrca/firebase_options.dart';
 import 'package:mrca/screens/home/home_screen.dart';
+import 'package:mrca/service_facade.dart';
 import 'package:provider/provider.dart';
-
-import 'blocs/home_screen_view_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  ServiceFacade.registerDefaultService();
   runApp(const MyApp());
 }
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

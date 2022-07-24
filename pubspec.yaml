@@ -44,6 +44,12 @@ dependencies:
   provider: ^6.0.3
   firebase_storage: ^10.3.3
   flutter_chat_ui: ^1.6.3
+  uuid: ^3.0.6
+  firebase_auth:
+  shared_preferences: ^2.0.15
+  get_it: ^7.2.0
+  agora_rtc_engine: ^5.3.0
+  permission_handler: ^10.0.0
 
 dev_dependencies:
   flutter_test:

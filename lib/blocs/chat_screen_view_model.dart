@@ -10,4 +10,7 @@ class ChatScreenViewModel extends ChangeNotifier {
       return event.docs.map((e) => type.Message.fromJson(e.data())).toList();
     });
   }
+
+  sendMessage(String content, String type, String roomId, type.User author) =>
+      _api.sendMessage(content, type, roomId, author);
 }

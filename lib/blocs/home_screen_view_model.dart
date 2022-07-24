@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mrca/api/api.dart';
+import 'package:mrca/config/user_config.dart';
 import 'package:mrca/models/conversation.dart';
 
 class HomeScreenViewModel extends ChangeNotifier {
@@ -15,7 +16,7 @@ class HomeScreenViewModel extends ChangeNotifier {
   }
 
   Stream<List<Conversation>> get conversationsStream =>
-      _api.getAllConversation(10).map((event) {
+      _api.getAllConversation(10, currentUser.id).map((event) {
         return event.docs.map((e) => Conversation.fromJson(e.data())).toList();
       });
 

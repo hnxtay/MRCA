@@ -10,10 +10,12 @@ _$_Conversation _$$_ConversationFromJson(Map<String, dynamic> json) =>
     _$_Conversation(
       id: json['id'] as String,
       from: type.User.fromJson(json['from'] as Map<String, dynamic>),
-      to: json['to'] as String,
-      lastMsg: json['lastMsg'] as String,
+      to: type.User.fromJson(json['to'] as Map<String, dynamic>),
+      lastMsg: LastMessage.fromJson(json['lastMsg'] as Map<String, dynamic>),
       status: json['status'] as String,
       time: json['time'] as String,
+      members:
+          (json['members'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$_ConversationToJson(_$_Conversation instance) =>
@@ -24,4 +26,5 @@ Map<String, dynamic> _$$_ConversationToJson(_$_Conversation instance) =>
       'lastMsg': instance.lastMsg,
       'status': instance.status,
       'time': instance.time,
+      'members': instance.members,
     };
