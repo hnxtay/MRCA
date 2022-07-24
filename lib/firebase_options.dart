@@ -70,7 +70,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '436799518757',
     projectId: 'mrca-ea46d',
     storageBucket: 'mrca-ea46d.appspot.com',
-    iosClientId: '436799518757-v2199i5kuamtumn2a9rnfcbnunufid5t.apps.googleusercontent.com',
+    iosClientId:
+        '436799518757-v2199i5kuamtumn2a9rnfcbnunufid5t.apps.googleusercontent.com',
     iosBundleId: 'com.dev.mrcateam.mrca',
   );
 }
