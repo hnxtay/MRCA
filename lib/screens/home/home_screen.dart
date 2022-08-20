@@ -18,9 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent.withOpacity(.5),
+        backgroundColor: Colors.transparent.withOpacity(.1),
         title: const Text(
-          'Chats',
+          'MRCA',
           style: TextStyle(
             fontSize: 34,
             color: Colors.green,

@@ -128,27 +128,6 @@ class _State extends State<JoinChannelVideo> {
                   controller: _controller,
                   decoration: const InputDecoration(hintText: 'Channel ID'),
                 ),
-                if (!kIsWeb &&
-                    (defaultTargetPlatform == TargetPlatform.android ||
-                        defaultTargetPlatform == TargetPlatform.iOS))
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Text(
-                          'Rendered by SurfaceView \n(default TextureView): '),
-                      Switch(
-                        value: _isRenderSurfaceView,
-                        onChanged: isJoined
-                            ? null
-                            : (changed) {
-                                setState(() {
-                                  _isRenderSurfaceView = changed;
-                                });
-                              },
-                      )
-                    ],
-                  ),
                 Row(
                   children: [
                     Expanded(
