@@ -31,7 +31,11 @@ class MessageCard extends StatelessWidget {
         subtitle: Row(
           children: [
             Text(conversation.lastMsg.from == currentUser.id ? 'You: ' : ''),
-            Text(conversation.lastMsg.text),
+            Text(
+              conversation.lastMsg.text,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
           ],
         ),
         trailing: FittedBox(

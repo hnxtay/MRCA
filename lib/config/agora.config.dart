@@ -10,7 +10,7 @@ String get token {
   // Allow pass a `token` as an environment variable with name `TEST_TOKEN` by using --dart-define
   return const String.fromEnvironment('TEST_TOKEN',
       defaultValue:
-          '006842ccebd618241359142fd9b2d710912IAAxB4zXZ82NM+1YrVSzPS2sYWDWhgYxC5zNCi5niTD3sjBrPDMAAAAAEABsSV6N4h3gYgEAAQDiHeBi');
+          '007eJxTYHDnPsWxhCNfc+6lGVuWn31gdkzCS9Fev2PWLMcjSwyOdxUoMFiYGCUnpyalmBlaGJkYGptaGpoYpaVYJhmlmBsaWBoaFVznSf6gwZfMfWslEyMDBIL4LAyGRsYmDAwA8UkeUQ==');
 }
 
 /// Your channel ID
@@ -18,7 +18,7 @@ String get channelId {
   // Allow pass a `channelId` as an environment variable with name `TEST_CHANNEL_ID` by using --dart-define
   return const String.fromEnvironment(
     'TEST_CHANNEL_ID',
-    defaultValue: '1412',
+    defaultValue: '1234',
   );
 }
 
