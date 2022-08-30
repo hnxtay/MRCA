@@ -63,41 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Consumer<HomeScreenViewModel>(
-        builder: (_, value, child) {
-          return BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.people_sharp),
-                label: 'Social',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.manage_accounts_sharp),
-                label: 'Setting',
-              ),
-            ],
-            currentIndex: value.bottomNavIndex,
-            selectedItemColor: Colors.blue[800],
-            onTap: value.setBottomNavIndex,
-          );
-        },
-      ),
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 64, right: 8),
-        child: FloatingActionButton(
-          backgroundColor: Colors.blue,
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-          onPressed: () {},
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
     );
   }
 }

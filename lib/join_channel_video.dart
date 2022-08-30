@@ -124,10 +124,6 @@ class _State extends State<JoinChannelVideo> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextField(
-                  controller: _controller,
-                  decoration: const InputDecoration(hintText: 'Channel ID'),
-                ),
                 Row(
                   children: [
                     Expanded(
